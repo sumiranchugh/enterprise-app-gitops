@@ -31,6 +31,8 @@ spec:
       params:
         - name: TLSVERIFY
           value: 'false'
+        - name: IMAGE
+          value: quay-z8nxk.apps.cluster-z8nxk.sandbox1967.opentlc.com/admin/gitops
       resources:
         inputs:
           - name: source
