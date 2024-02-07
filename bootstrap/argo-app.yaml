@@ -1,0 +1,35 @@
+project: enterprise-app-pipeline
+source:
+  repoURL: >-
+    https://github.com/sumiranchugh/enterprise-app-gitops.git
+  path: ./pipelines
+  targetRevision: HEAD
+  helm:
+    parameters:
+      - name: namespace.name
+        value: enterprise-app-dev
+      - name: environment
+        value: dev
+      - name: image.tag
+        value: latest
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: enterprise-app-dev
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - RespectIgnoreDifferences=true
+    - ApplyOutOfSyncOnly=true
+  retry:
+    limit: -1
+    backoff:
+      duration: 5s
+      factor: 2
+      maxDuration: 2m
+ignoreDifferences:
+  - group: '*'
+    kind: ServiceAccount
+    jqPathExpressions:
+      - '.imagePullSecrets[] | select(.name|test(".-dockercfg-."))'

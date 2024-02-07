@@ -1,0 +1,36 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: git-event-listener
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+  - bindings:
+    - ref: enterprise-push-binding
+    interceptors:
+    - params:
+      - name: secretRef
+        value:
+          secretKey: webhook-secret-key
+          secretName: webhook-secret-enterprise
+      ref:
+        name: github
+    - params:
+      - name: filter
+        value: ((header.match('X-GitHub-Event', 'push') || header.match('x-github-event', 'push')) && body.repository.full_name
+          == 'sumiranchugh/enterprise-app')
+      - name: overlays
+        value:
+        - expression: body.ref.split('/')[2]
+          key: ref
+        - key: commit-id-short
+          expression: "body.head_commit.id.truncate(7)"
+        - key: commit-message-fix-newline
+          expression: body.head_commit.message.replace('\n', '\\n')
+      ref:
+        name: cel
+    name: build-from-push-enterprise
+    template:
+      ref: enterprise-ci-template

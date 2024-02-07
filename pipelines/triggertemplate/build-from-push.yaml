@@ -1,0 +1,100 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: enterprise-ci-template
+spec:
+  params:
+  - description: The git branch for this PR.
+    name: commitRef
+  - description: the specific commit SHA.
+    name: commitId
+  - description: the specific short commit SHA.
+    name: commitIdShort
+  - description: The date at which the commit was made
+    name: commitDate
+  - description: The name of the github user handle that made the commit
+    name: commitAuthor
+  - description: The commit message
+    name: commitMessage
+  - description: The git repository URL.
+    name: gitRepositoryUrl
+  - description: The repository name for this PullRequest.
+    name: repositoryFullname
+  - description: The repository to push built images to.
+    name: imageRepo
+  - description: The file to update to point to newly built image
+    name: manifestFile
+  - description: The file to update to point to newly built image in prod
+    name: manifestFileProd
+  - description: The git repository server with the manifest files
+    name: manifestRepoGitServer
+  - description: The secret with the git token
+    name: manifestGitTokenSecretName
+  - description: The key with the git token
+    name: manifestGitTokenSecretKey
+  - description: The hostname of the git API (api.github.com for GitHub)
+    name: manifestGitApiHost
+  - description: The full name of the manifest repository
+    name: manifestRepoFullName
+  - description: The prefix for the Git API ("" for Github)
+    name: manifestGitApiPathPrefix
+  - description: The authentication type for th Git server (Bearer for Github)
+    name: manifestGitAuthType
+  - description: The location of the docker file definition in the source code
+    name: dockerFile
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      creationTimestamp: null
+      name: enterprise-ci-run-$(uid)
+    spec:
+      params:
+      - name: GIT_REPO
+        value: $(tt.params.gitRepositoryUrl)
+      - name: GIT_REF
+        value: $(tt.params.commitRef)
+      - name: DOCKERFILE
+        value: $(tt.params.dockerFile)
+      - name: IMAGE
+        value: $(tt.params.imageRepo):$(tt.params.commitIdShort)
+      - name: DEV_MANIFEST_FILE
+        value: $(tt.params.manifestFile)
+      - name: PROD_MANIFEST_FILE
+        value: $(tt.params.manifestFileProd)
+      - name: PROD_MANIFEST_BRANCH
+        value: "feature-for-$(tt.params.commitIdShort)"
+      - name: MANIFEST_REPO
+        value: $(tt.params.manifestRepoGitServer)/$(tt.params.manifestRepoFullName).git
+      - name: MANIFEST_GIT_TOKEN_SECRET_NAME
+        value: $(tt.params.manifestGitTokenSecretName)
+      - name: MANIFEST_GIT_TOKEN_SECRET_KEY
+        value: $(tt.params.manifestGitTokenSecretKey)
+      - name: MANIFEST_GIT_API_HOST
+        value: $(tt.params.manifestGitApiHost)
+      - name: MANIFEST_REPO_FULL_NAME
+        value: $(tt.params.manifestRepoFullName)
+      - name: MANIFEST_API_PATH_PREFIX
+        value: $(tt.params.manifestGitApiPathPrefix)
+      - name: MANIFEST_GIT_AUTH_TYPE
+        value: $(tt.params.manifestGitAuthType)
+      - name: COMMIT_MESSAGE
+        value: $(tt.params.commitMessage)
+      - name: COMMIT_AUTHOR
+        value: $(tt.params.commitAuthor)
+      - name: COMMIT_DATE
+        value: $(tt.params.commitDate)
+      - name: COMMIT_SHA
+        value: $(tt.params.commitId)
+      pipelineRef:
+        name: enterprise-ci
+      serviceAccountName: pipeline
+      workspaces:
+      - name: shared-data
+        persistentVolumeClaim:
+          claimName: workspace-enterprise-pvc
+      - name: maven-repo
+        persistentVolumeClaim:
+          claimName: workspace-maven-repo-pvc
+      - name: ephemeral
+        emptyDir: {}
