@@ -43,3 +43,8 @@ spec:
       taskRef:
         kind: ClusterTask
         name: s2i-php
+      workspaces:
+        - name: source
+          workspace: source
+  workspaces:
+    - name: source      
