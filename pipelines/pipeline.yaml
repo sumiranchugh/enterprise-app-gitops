@@ -31,13 +31,6 @@ spec:
       params:
         - name: TLSVERIFY
           value: 'false'
-      resources:
-        inputs:
-          - name: source
-            resource: source-code
-        outputs:
-          - name: image
-            resource: container-image
       taskRef:
         kind: ClusterTask
         name: s2i-php
