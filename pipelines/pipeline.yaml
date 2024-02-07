@@ -21,11 +21,23 @@ spec:
       description: patch image
       name: PATCH_IMAGE
       type: string
+  resources:
+    - name: source-code
+      type: git
+    - name: container-image
+      type: image
   tasks:
     - name: build-app
       params:
         - name: TLSVERIFY
           value: 'false'
+      resources:
+        inputs:
+          - name: source
+            resource: source-code
+        outputs:
+          - name: image
+            resource: container-image
       taskRef:
         kind: ClusterTask
         name: s2i-php
