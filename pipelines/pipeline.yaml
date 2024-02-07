@@ -21,11 +21,6 @@ spec:
       description: patch image
       name: PATCH_IMAGE
       type: string
-  resources:
-    - name: source-code
-      type: git
-    - name: container-image
-      type: image
   tasks:
     - name: build-app
       params:
