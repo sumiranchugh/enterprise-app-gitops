@@ -8,8 +8,6 @@ spec:
     value: $(body.repository.clone_url)
   - name: repositoryFullname
     value: $(body.repository.full_name)
-  - name: commitRef
-    value: $(extensions.ref)
   - name: commitId
     value: $(body.head_commit.id)
   - name: commitIdShort
