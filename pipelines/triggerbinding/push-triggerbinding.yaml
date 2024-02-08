@@ -10,12 +10,8 @@ spec:
     value: $(body.repository.full_name)
   - name: commitId
     value: $(body.head_commit.id)
-  - name: commitIdShort
-    value: $(extensions.commit-id-short)
   - name: commitDate
     value: $(body.head_commit.timestamp)
-  - name: commitMessage
-    value: $(extensions.commit-message-fix-newline)
   - name: commitAuthor
     value: $(body.head_commit.author.name)
   - name: dockerFile
