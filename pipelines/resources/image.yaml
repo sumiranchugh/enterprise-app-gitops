@@ -1,9 +1,0 @@
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-name: enterprise-app
-spec:
-params:
-- name: url
-  value: 
-type: image

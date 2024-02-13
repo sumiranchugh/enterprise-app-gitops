@@ -1,9 +1,0 @@
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
- name: enterprise-app-gitops-code
-spec:
- params:
- - name: url
-   value: https://github.com/sumiranchugh/enterprise-app-gitops.git
- type: git
