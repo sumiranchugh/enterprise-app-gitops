@@ -14,10 +14,6 @@ spec:
     value: $(body.head_commit.timestamp)
   - name: commitAuthor
     value: $(body.head_commit.author.name)
-  - name: dockerFile
-    value: "./.docker/Dockerfile"
-  - name: imageRepo
-    value: quay-z8nxk.apps.cluster-z8nxk.sandbox1967.opentlc.com/admin/gitops
   - name: manifestRepoGitServer
     value: "https://github.com"
   - name: manifestGitTokenSecretName
