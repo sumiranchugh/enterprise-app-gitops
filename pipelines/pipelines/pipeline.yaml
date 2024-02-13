@@ -2,6 +2,8 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: enterprise-app-dev
+  labels: 
+    app.kubernetes.io/instance: enterprise-app-pipeline
 spec:
   params:
     - name: IMAGE_NAME
