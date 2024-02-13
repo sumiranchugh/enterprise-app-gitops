@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mssql-server-linux
+  labels:
+    app: mssql-server-linux
+spec:
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  sessionAffinity: None
+  selector:
+    app: mssql-server-linux
+

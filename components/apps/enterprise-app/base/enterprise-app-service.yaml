@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-apache-php-app
+  labels:
+    app: my-apache-php-app
+  annotations:
+    app.openshift.io/connects-to: mssql-server-linux
+spec:
+  ports:
+    - name: 80-tcp
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  sessionAffinity: None
+  selector:
+    app: my-apache-php-app
+    deploymentconfig: my-apache-php-app
+status:
+  loadBalancer: {}
