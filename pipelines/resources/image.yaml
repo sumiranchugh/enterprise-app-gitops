@@ -5,5 +5,5 @@ metadata:
 spec:
   params:
     - name: url
-      value: 
+      value: 'image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app'
   type: image
