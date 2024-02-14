@@ -103,13 +103,13 @@ spec:
       workspaces:
       - name: workspace
         volumeClaimTemplate:
-          metadata:
-            creationTimestamp: null
-          spec:
-            accessModes:
-              - ReadWriteOnce
-            resources:
-              requests:
-                storage: 3Gi
-      - name: ephemeral
-        emptyDir: {}
+        metadata:
+          creationTimestamp: null
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+          storageClassName: gp2
+          volumeMode: Filesystem
