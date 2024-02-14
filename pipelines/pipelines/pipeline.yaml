@@ -61,23 +61,23 @@ spec:
       workspaces:
         - name: source
           workspace: workspace          
-    - name: deploy
-      params:
-        - name: image
-          value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
-        - name: configuration_file
-          value: $(params.MANIFEST_FILE)
-        - name: repository
-          value: $(params.MANIFEST_REPO)
-        - name: git_user_name
-          value: $(params.COMMIT_AUTHOR)
-        - name: env
-          value: $(params.env)  
-      runAfter:
-        - build
-      taskRef:
-        kind: Task
-        name: update-manifest
+    # - name: deploy
+    #   params:
+    #     - name: image
+    #       value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
+    #     - name: configuration_file
+    #       value: $(params.MANIFEST_FILE)
+    #     - name: repository
+    #       value: $(params.MANIFEST_REPO)
+    #     - name: git_user_name
+    #       value: $(params.COMMIT_AUTHOR)
+    #     - name: env
+    #       value: $(params.env)  
+    #   runAfter:
+    #     - build
+    #   taskRef:
+    #     kind: Task
+    #     name: update-manifest
   workspaces:
     - name: workspace
       
