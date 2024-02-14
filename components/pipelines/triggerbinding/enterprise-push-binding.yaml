@@ -23,21 +23,13 @@ spec:
   - name: COMMIT_AUTHOR
     value: $(body.head_commit.author.name)
   - name: manifestRepoGitServer
-    value: "https://github.com"
+    value: "https://github.com/sumiranchugh"
   - name: manifestGitTokenSecretName
     value: enterprise-gitops-repo
-  - name: manifestGitTokenSecretKey
-    value: token
-  - name: manifestGitApiHost
-    value: api.github.com
-  - name: MANIFEST_REPO
+  - name: manifestRepoFullName
     value: "enterprise-app-gitops"
-  - name: manifestGitApiPathPrefix
-    value: ""
-  - name: manifestGitAuthType
-    value: token
-  - name: MANIFEST_FILE
-    value: deployment.yaml
+  - name: manifestFile
+    value: components/apps/enterprise-app/overlays/dev/kustomization.yaml
   - name: imageRepo
     value: 'image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app'    
   

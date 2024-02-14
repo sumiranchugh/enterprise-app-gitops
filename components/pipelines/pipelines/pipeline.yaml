@@ -4,24 +4,21 @@ metadata:
   name: enterprise-app-pipeline
 spec:
   params:
-    # - name: env
-    #   default: dev
-    #   type: string
     - name: IMAGE_REPO
       type: string
       default: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
     - name: IMAGE_TAG
       type: string
       default: latest
-    # - name: MANIFEST_FILE
-    #   type: string
-    #   default: deployment.yaml
+    - name: MANIFEST_FILE
+      type: string
+      default: components/apps/enterprise-app/overlays/dev/kustomization.yaml
     - name: COMMIT_AUTHOR
       type: string
       default: tekton    
-    # - name: MANIFEST_REPO
-    #   type: string
-    #   default: https://github.com/sumiranchugh/enterprise-app-gitops.git       
+    - name: MANIFEST_REPO
+      type: string
+      default: https://github.com/sumiranchugh/enterprise-app-gitops.git       
     - name: GIT_REPO
       type: string
       default: https://github.com/sumiranchugh/enterprise-app.git
@@ -59,23 +56,21 @@ spec:
       workspaces:
         - name: source
           workspace: workspace          
-    # - name: deploy
-    #   params:
-    #     - name: image
-    #       value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
-    #     - name: configuration_file
-    #       value: $(params.MANIFEST_FILE)
-    #     - name: repository
-    #       value: $(params.MANIFEST_REPO)
-    #     - name: git_user_name
-    #       value: $(params.COMMIT_AUTHOR)
-    #     - name: env
-    #       value: $(params.env)  
-    #   runAfter:
-    #     - build
-    #   taskRef:
-    #     kind: Task
-    #     name: update-manifest
+    - name: deploy
+      params:
+        - name: image
+          value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
+        - name: configuration_file
+          value: $(params.MANIFEST_FILE)
+        - name: repository
+          value: $(params.MANIFEST_REPO)
+        - name: git_user_name
+          value: $(params.COMMIT_AUTHOR)
+      runAfter:
+        - build
+      taskRef:
+        kind: Task
+        name: update-manifest
   workspaces:
     - name: workspace
       
