@@ -2,3 +2,4 @@
 resources:
   - mssql-service.yaml
   - mssql-deployment.yaml
+  - mssql-pvc.yaml
