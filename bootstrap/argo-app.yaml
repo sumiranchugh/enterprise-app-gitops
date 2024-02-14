@@ -9,7 +9,7 @@ spec:
   ignoreDifferences:
     - group: '*'
       jsonPointers:
-        - /spec/imagePullSecrets/name
+        - /imagePullSecrets
       kind: ServiceAccount
   project: default
   source:
