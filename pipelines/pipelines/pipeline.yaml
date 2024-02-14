@@ -82,13 +82,5 @@ spec:
         name: update-manifest
   workspaces:
     - name: workspace
-      volumeClaimTemplate:
-        metadata:
-          creationTimestamp: null
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 3Gi
+      
   

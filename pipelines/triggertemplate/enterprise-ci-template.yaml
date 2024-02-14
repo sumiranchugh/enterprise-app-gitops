@@ -64,7 +64,7 @@ spec:
       - name: IMAGE_REPO
         value: $(tt.params.imageRepo)
       - name: IMAGE_TAG
-        value: $(tt.params.commitRef)-$(tt.params.commitId)
+        value: $(tt.params.commitId)
       - name: DEV_MANIFEST_FILE
         value: $(tt.params.manifestFile)
       - name: PROD_MANIFEST_FILE
