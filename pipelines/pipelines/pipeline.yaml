@@ -70,6 +70,8 @@ spec:
           value: $(params.MANIFEST_REPO)
         - name: git_user_name
           value: $(params.COMMIT_AUTHOR)
+        - name: env
+          value: $(params.env)  
       runAfter:
         - build
       taskRef:
