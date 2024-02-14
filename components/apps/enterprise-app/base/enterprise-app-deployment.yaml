@@ -20,7 +20,7 @@ spec:
           image: >-
             quay.io/hguerreroo/my-apache-php-app@sha256:11b298623d8edbfe100ea848f14f013ed22cf3902834d029b31edfcd6e31ce60
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
           env:
             - name: SERVER_NAME
@@ -40,12 +40,6 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext:
-        capabilities:
-          add:
-            - SYS_CHROOT
-          drop:
-            - MKNOD
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
