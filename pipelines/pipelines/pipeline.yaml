@@ -38,7 +38,7 @@ spec:
         - name: subdirectory
           value: ''
         - name: deleteExisting
-          value: 'true'
+          value: 'false'
       taskRef:
         kind: ClusterTask
         name: git-clone
