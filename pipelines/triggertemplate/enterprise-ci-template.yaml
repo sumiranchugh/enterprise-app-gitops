@@ -56,8 +56,10 @@ spec:
         value: $(tt.params.commitRef)
       - name: DOCKERFILE
         value: $(tt.params.dockerFile)
-      - name: IMAGE
-        value: $(tt.params.imageRepo):$(tt.params.commitIdShort)
+      - name: IMAGE_REPO
+        value: $(tt.params.imageRepo)
+      - name: IMAGE_TAG
+        value: $(tt.params.io.openshift.build.commit.ref)-$(tt.params.io.openshift.build.commit.id)
       - name: DEV_MANIFEST_FILE
         value: $(tt.params.manifestFile)
       - name: PROD_MANIFEST_FILE
@@ -91,10 +93,14 @@ spec:
       serviceAccountName: pipeline
       workspaces:
       - name: shared-data
-        persistentVolumeClaim:
-          claimName: workspace-enterprise-pvc
-      - name: maven-repo
-        persistentVolumeClaim:
-          claimName: workspace-maven-repo-pvc
+        volumeClaimTemplate:
+          metadata:
+            creationTimestamp: null
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 3Gi
       - name: ephemeral
         emptyDir: {}

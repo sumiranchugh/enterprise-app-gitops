@@ -4,6 +4,10 @@ metadata:
   name: enterprise-push-binding
 spec:
   params:
+  - name: IMAGE_REPO
+    value: $(tt.params.imageRepo)
+  - name: IMAGE_TAG
+    value: $(tt.params.io.openshift.build.commit.ref)-$(tt.params.io.openshift.build.commit.id)  
   - name: gitRepositoryUrl
     value: $(body.repository.clone_url)
   - name: repositoryFullname
