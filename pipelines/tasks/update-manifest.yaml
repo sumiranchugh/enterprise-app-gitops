@@ -43,7 +43,6 @@ spec:
 
       cd $TMPDIR
       git clone $(params.repository)
-      cd components/apps/${directory}/overlays/{env}/
       git checkout $(params.target-branch)
 
       # Set to the short commit value passed as parameter.
