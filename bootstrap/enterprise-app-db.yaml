@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: enterprise-app-dev
+  name: enterprise-app-db-dev
 spec:
   destination:
     namespace: enterprise-app-dev
@@ -13,7 +13,7 @@ spec:
       kind: ServiceAccount
   project: default
   source:
-    path: components/apps/enterprise-app/overlays/dev
+    path: components/apps/mssql/overlays/dev
     repoURL: 'https://github.com/sumiranchugh/enterprise-app-gitops.git'
     targetRevision: HEAD
   syncPolicy:

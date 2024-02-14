@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mssql-server-volume
+  labels:
+    app: mssql-server-linux
+    deploymentconfig: mssql-server-linux
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+  storageClassName: gp2
+  volumeMode: Filesystem
