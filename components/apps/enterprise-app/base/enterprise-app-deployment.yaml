@@ -40,7 +40,12 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext: {}
+      securityContext:
+        capabilities:
+          add:
+            - SYS_CHROOT
+          drop:
+            - MKNOD
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
