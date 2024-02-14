@@ -57,8 +57,6 @@ spec:
         value: $(tt.params.gitRepositoryUrl)
       - name: GIT_REF
         value: $(tt.params.commitRef)
-      - name: DOCKERFILE
-        value: $(tt.params.dockerFile)
       - name: IMAGE_REPO
         value: $(tt.params.imageRepo)
       - name: IMAGE_TAG
@@ -95,7 +93,7 @@ spec:
         name: enterprise-app-pipeline
       serviceAccountName: pipeline
       workspaces:
-      - name: shared-data
+      - name: workspace
         volumeClaimTemplate:
           metadata:
             creationTimestamp: null
