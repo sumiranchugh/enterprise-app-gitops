@@ -6,9 +6,17 @@ metadata:
     app.kubernetes.io/instance: enterprise-app-pipeline
 spec:
   params:
-    - name: IMAGE_NAME
+    - name: IMAGE_REPO
       type: string
       default: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
+    - name: IMAGE_TAG
+      type: string
+    - name: MANIFEST_FILE
+      type: string
+      default: deployment.yaml  
+    - name: MANIFEST_REPO
+      type: string
+      default: https://github.com/sumiranchugh/enterprise-app-gitops.git       
     - name: GIT_REPO
       type: string
       default: https://github.com/sumiranchugh/enterprise-app.git
@@ -35,7 +43,7 @@ spec:
     - name: build
       params:
         - name: IMAGE
-          value: $(params.IMAGE_NAME)
+          value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
         - name: TLSVERIFY
           value: 'false'
       runAfter:
