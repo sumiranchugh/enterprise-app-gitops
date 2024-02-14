@@ -5,6 +5,10 @@ metadata:
 spec:
   params:
   - description: The git branch for this PR.
+    name: io.openshift.build.commit.ref
+  - description: the specific commit SHA.
+    name: io.openshift.build.commit.id
+  - description: The git branch for this PR.
     name: commitRef
   - description: the specific commit SHA.
     name: commitId
