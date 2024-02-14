@@ -52,8 +52,9 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      creationTimestamp: null
       name: enterprise-ci-run-$(uid)
+      labels: 
+        tekton.dev/pipeline=enterprise-app-pipeline
     spec:
       params:
       - name: GIT_REPO
