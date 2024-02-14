@@ -11,8 +11,7 @@ spec:
     type: string
   - description: Env to update.
     name: env
-    type: string
-    default: dev  
+    type: string  
   - default: main
     description: Target branch to push to
     name: target-branch

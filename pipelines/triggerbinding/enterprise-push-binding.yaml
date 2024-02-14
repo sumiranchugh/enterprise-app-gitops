@@ -12,7 +12,7 @@ spec:
     value: $(body.head_commit.id)
   - name: commitDate
     value: $(body.head_commit.timestamp)
-  - name: commitAuthor
+  - name: COMMIT_AUTHOR
     value: $(body.head_commit.author.name)
   - name: manifestRepoGitServer
     value: "https://github.com"
@@ -22,10 +22,12 @@ spec:
     value: token
   - name: manifestGitApiHost
     value: api.github.com
-  - name: manifestRepoFullName
+  - name: MANIFEST_REPO
     value: "enterprise-app-gitops"
   - name: manifestGitApiPathPrefix
     value: ""
   - name: manifestGitAuthType
     value: token
+  - name: MANIFEST_FILE
+    value: deployment.yaml  
   
