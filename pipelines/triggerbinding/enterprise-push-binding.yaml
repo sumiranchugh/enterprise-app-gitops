@@ -7,7 +7,7 @@ spec:
   - name: IMAGE_REPO
     value: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
   - name: IMAGE_TAG
-    value: $(tt.params.io.openshift.build.commit.ref)-$(tt.params.io.openshift.build.commit.id)  
+    value: $(body.head_commit.id)  
   - name: gitRepositoryUrl
     value: $(body.repository.clone_url)
   - name: repositoryFullname
