@@ -12,6 +12,8 @@ spec:
     value: $(body.head_commit.id)  
   - name: gitRepositoryUrl
     value: $(body.repository.clone_url)
+  - name: gitRevision
+    value: $(body.ref)  
   - name: repositoryFullname
     value: $(body.repository.full_name)
   - name: commitId

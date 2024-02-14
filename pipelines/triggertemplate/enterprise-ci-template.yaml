@@ -20,6 +20,8 @@ spec:
     name: commitMessage
   - description: The git repository URL.
     name: gitRepositoryUrl
+  - description: The git revision.
+    name: gitRevision  
   - description: The repository name for this PullRequest.
     name: repositoryFullname
   - description: The repository to push built images to.
@@ -55,6 +57,8 @@ spec:
       params:
       - name: GIT_REPO
         value: $(tt.params.gitRepositoryUrl)
+      - name: GIT_REVISION
+        value: $(tt.params.gitRevision)  
       - name: GIT_REF
         value: $(tt.params.commitRef)
       - name: IMAGE_REPO
