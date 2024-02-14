@@ -104,3 +104,5 @@ spec:
       - name: workspace
         persistentVolumeClaim:
           claimName: workspace
+      - name: ephemeral
+        emptyDir: {}    
