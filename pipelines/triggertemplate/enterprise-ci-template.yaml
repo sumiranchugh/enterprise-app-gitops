@@ -97,9 +97,9 @@ spec:
         name: enterprise-app-pipeline
       serviceAccountName: pipeline
       timeouts:
-        pipeline: "0h0m60s"
-        tasks: "0h0m40s"
-        finally: "0h05m20s"
+        pipeline: "0h9m60s"
+        tasks: "0h2m40s"
+        finally: "0h01m20s"
       workspaces:
       - name: workspace
         persistentVolumeClaim:
