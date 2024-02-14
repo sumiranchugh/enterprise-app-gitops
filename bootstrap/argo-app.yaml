@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: enterprise-app-pipeline
+  name: enterprise-app
 spec:
   destination:
     namespace: enterprise-app-dev
