@@ -5,3 +5,11 @@ namespace: enterprise-app-dev
 
 bases:
 - ../../base
+patches:
+- target:
+    kind: Deployment
+    name: my-apache-php-app
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app:latest
