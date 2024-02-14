@@ -103,4 +103,4 @@ spec:
       workspaces:
       - name: workspace
         persistentVolumeClaim:
-          claimName: pvc-workspace
+          claimName: workspace
