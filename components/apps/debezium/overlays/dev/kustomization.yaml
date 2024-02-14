@@ -1,5 +1,7 @@
 bases:
   - ../../base
 
+namespace: enterprise-app-dev
+
 resources:
   - kafka-connector.yaml
