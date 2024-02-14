@@ -2,8 +2,6 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: enterprise-app-pipeline
-  labels: 
-    app.kubernetes.io/instance: enterprise-app-pipeline
 spec:
   params:
     # - name: env
