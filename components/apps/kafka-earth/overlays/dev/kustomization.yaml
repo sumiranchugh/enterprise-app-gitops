@@ -1,0 +1,4 @@
+namespace: shared-kafka-earth
+
+bases:
+  - ../../base

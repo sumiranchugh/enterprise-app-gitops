@@ -1,0 +1,5 @@
+bases:
+  - ../../base
+
+resources:
+  - kafka-connector.yaml
