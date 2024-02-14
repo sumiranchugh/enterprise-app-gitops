@@ -13,7 +13,10 @@ spec:
       type: string
     - name: MANIFEST_FILE
       type: string
-      default: deployment.yaml  
+      default: deployment.yaml
+    - name: COMMIT_AUTHOR
+      type: string
+      default: tekton@tekton.com    
     - name: MANIFEST_REPO
       type: string
       default: https://github.com/sumiranchugh/enterprise-app-gitops.git       
