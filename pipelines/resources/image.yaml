@@ -3,7 +3,7 @@ kind: PipelineResource
 metadata:
   name: enterprise-app
   labels: 
-    tekton.dev/pipeline=enterprise-app-pipeline
+    tekton.dev/pipeline: enterprise-app-pipeline
 spec:
   params:
     - name: url

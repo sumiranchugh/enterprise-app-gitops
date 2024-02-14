@@ -3,7 +3,7 @@ kind: TriggerTemplate
 metadata:
   name: enterprise-ci-template
   labels: 
-    tekton.dev/pipeline=enterprise-app-pipeline
+    tekton.dev/pipeline: enterprise-app-pipeline
 spec:
   params:
   - description: The git branch for this PR.
@@ -54,7 +54,7 @@ spec:
     metadata:
       name: enterprise-ci-run-$(uid)
       labels: 
-        tekton.dev/pipeline=enterprise-app-pipeline
+        tekton.dev/pipeline: enterprise-app-pipeline
     spec:
       params:
       - name: GIT_REPO

@@ -3,7 +3,7 @@ kind: TriggerBinding
 metadata:
   name: enterprise-push-binding
   labels: 
-    tekton.dev/pipeline=enterprise-app-pipeline
+    tekton.dev/pipeline: enterprise-app-pipeline
 spec:
   params:
   - name: IMAGE_REPO

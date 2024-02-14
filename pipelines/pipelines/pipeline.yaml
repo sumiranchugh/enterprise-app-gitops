@@ -5,7 +5,7 @@ metadata:
   labels: 
     app.kubernetes.io/instance: enterprise-app-pipeline
     labels: 
-      tekton.dev/pipeline=enterprise-app-pipeline
+      tekton.dev/pipeline: enterprise-app-pipeline
 spec:
   params:
     - name: env
