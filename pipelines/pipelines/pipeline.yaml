@@ -13,7 +13,7 @@ spec:
       type: string
     - name: image_repo
       type: string
-      default: 'image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app'
+      default: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
     - name: IMAGE_TAG
       type: string
       default: latest
@@ -82,4 +82,13 @@ spec:
         name: update-manifest
   workspaces:
     - name: workspace
+      volumeClaimTemplate:
+        metadata:
+          creationTimestamp: null
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 3Gi
   
