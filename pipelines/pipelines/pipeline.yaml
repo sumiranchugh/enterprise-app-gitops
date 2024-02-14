@@ -48,7 +48,7 @@ spec:
     - name: build
       params:
         - name: IMAGE
-          value: $(params.IMAGE_REPO):$(params.IMAGE_TAG)
+          value: $(params.IMAGE_REPO):latest
         - name: TLSVERIFY
           value: 'false'
       runAfter:

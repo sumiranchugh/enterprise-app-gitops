@@ -102,14 +102,5 @@ spec:
         finally: "0h0m20s"
       workspaces:
       - name: workspace
-        volumeClaimTemplate:
-        metadata:
-          creationTimestamp: null
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1Gi
-          storageClassName: gp2
-          volumeMode: Filesystem
+        persistentVolumeClaim:
+          claimName: pvc-workspace

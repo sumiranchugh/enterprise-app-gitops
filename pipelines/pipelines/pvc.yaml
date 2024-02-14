@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-workspace
+  namespace: enterprise-app-dev
+  finalizers:
+    - kubernetes.io/pvc-protection
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: pvc-b5e3350d-e18c-4c8e-8da2-6b1eba9d58b0
+  storageClassName: gp2
+  volumeMode: Filesystem
