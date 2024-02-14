@@ -50,7 +50,7 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      name: enterprise-ci-run-$(uid)
+      generateName: enterprise-ci-run-$(uid)
       labels: 
         tekton.dev/pipeline: enterprise-app-pipeline
     spec:
