@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: enterprise-app-dev
+spec:
+  destination:
+    namespace: enterprise-app-dev
+    server: 'https://kubernetes.default.svc'
+  ignoreDifferences:
+    - group: '*'
+      jsonPointers:
+        - /imagePullSecrets
+      kind: ServiceAccount
+  project: default
+  source:
+    directory:
+      jsonnet: {}
+      recurse: true
+      include: 'overlays/dev/*'
+      exclude: 'base'
+    path: components/apps/*/*/dev
+    repoURL: 'https://github.com/sumiranchugh/enterprise-app-gitops.git'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 2m
+      limit: -1
+    syncOptions:
+      - RespectIgnoreDifferences=true
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true

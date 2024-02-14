@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: enterprise-app
+  name: enterprise-app-pipeline
 spec:
   destination:
     namespace: enterprise-app-dev
@@ -16,7 +16,7 @@ spec:
     directory:
       jsonnet: {}
       recurse: true
-    path: components
+    path: components/pipelines
     repoURL: 'https://github.com/sumiranchugh/enterprise-app-gitops.git'
     targetRevision: HEAD
   syncPolicy:

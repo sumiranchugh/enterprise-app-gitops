@@ -11,7 +11,7 @@ spec:
     - name: 80-tcp
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8080
   sessionAffinity: None
   selector:
     app: my-apache-php-app
