@@ -30,10 +30,10 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 1Gb
+              memory: 1Gi
             limits:
               cpu: 1000m
-              memory: 3Gb  
+              memory: 3Gi  
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
