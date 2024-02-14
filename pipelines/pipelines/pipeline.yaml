@@ -6,6 +6,9 @@ metadata:
     app.kubernetes.io/instance: enterprise-app-pipeline
 spec:
   params:
+    - name: env
+      default: dev
+      type: string
     - name: IMAGE_REPO
       type: string
       default: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
