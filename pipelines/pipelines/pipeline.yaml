@@ -11,7 +11,7 @@ spec:
     - name: env
       default: dev
       type: string
-    - name: image_repo
+    - name: IMAGE_REPO
       type: string
       default: image-registry.openshift-image-registry.svc:5000/enterprise-app-dev/enterprise-app
     - name: IMAGE_TAG
