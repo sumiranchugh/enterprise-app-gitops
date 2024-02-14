@@ -42,6 +42,7 @@ spec:
       workspaces:
         - name: output
           workspace: workspace
+      retries: 3
     - name: build
       params:
         - name: IMAGE
