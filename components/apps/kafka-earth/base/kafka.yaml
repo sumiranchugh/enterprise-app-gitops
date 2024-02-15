@@ -12,7 +12,7 @@ spec:
         port: 9092
         tls: false
         type: internal
-      - name: external
+      - name: internal
         port: 9093
         tls: true
         type: route
